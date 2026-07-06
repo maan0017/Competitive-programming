@@ -1,0 +1,77 @@
+# Base formatting style
+BasedOnStyle: LLVM
+
+# Consistent indentation
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+# Function formatting
+AllowShortFunctionsOnASingleLine: InlineOnly
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+
+# Braces style (Visual Studio style)
+BreakBeforeBraces: Allman
+
+# Line length
+ColumnLimit: 100
+
+# Pointer/reference alignment
+PointerAlignment: Left
+DerivePointerAlignment: false
+
+# Alignment
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+AlignTrailingComments: true
+AlignOperands: true
+AlignAfterOpenBracket: Align
+
+# Spacing
+SpaceAfterCStyleCast: true
+SpacesInCStyleCastParentheses: false
+SpacesInAngles: false
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeParens: ControlStatements
+
+# Includes
+SortIncludes: true
+IncludeBlocks: Preserve
+IncludeCategories:
+  - Regex: '^<.*\.h>'
+    Priority: 1
+    SortPriority: 0
+  - Regex: '^"'
+    Priority: 2
+    SortPriority: 1
+  - Regex: ".*"
+    Priority: 3
+    SortPriority: 2
+
+# Comments
+ReflowComments: false
+CommentPragmas: "^ IWYU pragma:"
+
+# Namespaces and access modifiers
+NamespaceIndentation: All
+EmptyLineBeforeAccessModifier: Always
+FixNamespaceComments: true
+
+# Switch/case indentation
+IndentCaseLabels: true
+
+# C++11 braced list formatting
+Cpp11BracedListStyle: true
+
+# Block formatting
+KeepEmptyLinesAtTheStartOfBlocks: false
+
+# Macros & preprocessor directives
+IndentPPDirectives: AfterHash
+DisableFormat: false # Optional: use // clang-format off/on to manually control macro formatting
+
+# Misc
+BreakBeforeTernaryOperators: true
+SpacesInConditionalStatement: false

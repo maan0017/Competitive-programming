@@ -1,0 +1,67 @@
+{
+  "Competitive Programming C++ Boilerplate": {
+    "prefix": "cppbp_comp",
+    "body": [
+      "#include <bits/stdc++.h> // includes almost everything (works with g++)",
+      "using namespace std;",
+      "",
+      "int main()",
+      "{",
+      "    ios::sync_with_stdio(false); // fast IO",
+      "    cin.tie(nullptr);",
+      "    ",
+      "    // your code here",
+      "    $0",
+      "    ",
+      "    return 0;",
+      "}"
+    ],
+    "description": "C++ boilerplate template"
+  },
+  "Leetcode C++ Boilerplate": {
+    "prefix": "cppbp_leetcode",
+    "body": [
+      "#include <bits/stdc++.h> // includes almost everything (works with g++)",
+      "using namespace std;",
+      "#include \"../displayOutputs.h\"",
+      "",
+      "class Solution",
+      "{",
+      "public:",
+      "    $0",
+      "};",
+      "",
+      "int main()",
+      "{",
+      "    ios::sync_with_stdio(false); // fast IO",
+      "    cin.tie(nullptr);",
+      "    ",
+      "    // your test cases here",
+      "    ",
+      "    Solution s;",
+      "    // call that function here ->",
+      "    ",
+      "    return 0;",
+      "}"
+    ],
+    "description": "C++ boilerplate template"
+  },
+  "My Fav C++ bp": {
+    "prefix": "cppbp_fav",
+    "body": [
+      "#include <iostream>",
+      "",
+      "int main()",
+      "{",
+      "    std::ios::sync_with_stdio(false); // fast IO",
+      "    std::cin.tie(nullptr);",
+      "    ",
+      "    // your code here",
+      "    $0",
+      "    ",
+      "    return 0;",
+      "}"
+    ],
+    "description": "C++ boilerplate template"
+  }
+}

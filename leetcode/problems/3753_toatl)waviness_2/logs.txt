@@ -1,0 +1,16 @@
+[Test Case 1] Running...
+[Result] Test Case 1 Passed in 0 ms.
+----------------------------------------
+[Test Case 2] Running...
+[Result] Test Case 2 Passed in 0 ms.
+----------------------------------------
+[Test Case 3] Running...
+[Result] Test Case 3 Passed in 0 ms.
+----------------------------------------
+[Test Case 4] Running...
+[Result] Test Case 4 Passed in 1388 ms.
+----------------------------------------
+[Test Case 5] Running...
+[Result] Test Case 5 TLE (Time Limit Exceeded)! (>2000ms)
+[Info] Output written to output.txt
+[Info] Logs written to logs.txt
