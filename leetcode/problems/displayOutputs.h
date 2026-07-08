@@ -9,7 +9,7 @@ using namespace term;
 
 template <typename T> inline void displayTestCaseOutput(T expected, T output, double durationInMs)
 {
-    static int testCaseNumber;
+    static int testCaseNumber = 1;
 
     if (output == expected)
         std::cout << "[PASS] Test case " << testCaseNumber++ << " | Time: " << durationInMs
