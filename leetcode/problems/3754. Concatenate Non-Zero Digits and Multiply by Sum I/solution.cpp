@@ -26,6 +26,48 @@ class Solution
     }
 };
 
+//  OPTIMAL SOLUTION
+class SolutionOptimal
+{
+  public:
+    /**
+     * @brief Calculates the product of the number formed by removing zeros 
+     * and the sum of its non-zero digits.
+     * * @param n The input integer.
+     * @return long long The calculated product.
+     */
+    long long sumAndMultiply(int n)
+    {
+        if (n == 0)
+            return 0;
+
+        long long reconstructedNumber  = 0;
+        long long digitSum             = 0;
+        long long positionalMultiplier = 1;
+
+        // Use absolute value to prevent infinite loops or math errors with negative numbers
+        int temp = std::abs(n);
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+            temp /= 10;
+
+            if (digit != 0)
+            {
+                // Rebuild the number from right to left
+                reconstructedNumber += digit * positionalMultiplier;
+                positionalMultiplier *= 10;
+
+                // Sum the non-zero digits
+                digitSum += digit;
+            }
+        }
+
+        return reconstructedNumber * digitSum;
+    }
+};
+
 int main()
 {
     ios::sync_with_stdio(false); // fast IO
