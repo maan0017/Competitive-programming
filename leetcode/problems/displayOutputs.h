@@ -23,7 +23,8 @@ template <typename T> inline void displayTestCaseOutput(T expected, T output, do
 }
 
 template <typename T>
-inline void displayTestCaseOutput(vector<T> expected, vector<T> output, double durationInMs)
+inline void displayTestCaseOutput(std::vector<T> expected, std::vector<T> output,
+                                  double durationInMs)
 {
     static int testCaseNumber;
 

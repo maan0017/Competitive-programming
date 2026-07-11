@@ -22,7 +22,6 @@
     "prefix": "cppbp_leetcode",
     "body": [
       "#include <bits/stdc++.h> // includes almost everything (works with g++)",
-      "using namespace std;",
       "#include \"../displayOutputs.h\"",
       "",
       "class Solution",
@@ -33,8 +32,8 @@
       "",
       "int main()",
       "{",
-      "    ios::sync_with_stdio(false); // fast IO",
-      "    cin.tie(nullptr);",
+      "    std::ios::sync_with_stdio(false); // fast IO",
+      "    std::cin.tie(nullptr);",
       "    ",
       "    // your test cases here",
       "    ",
