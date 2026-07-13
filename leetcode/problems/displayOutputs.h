@@ -26,7 +26,7 @@ template <typename T>
 inline void displayTestCaseOutput(std::vector<T> expected, std::vector<T> output,
                                   double durationInMs)
 {
-    static int testCaseNumber;
+    static int testCaseNumber = 1;
 
     if (output == expected)
         std::cout << "[PASS] Test case " << testCaseNumber++ << " | Time: " << durationInMs
