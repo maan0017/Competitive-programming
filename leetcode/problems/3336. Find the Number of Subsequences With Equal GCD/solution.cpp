@@ -95,3 +95,44 @@ int main()
 
     return 0;
 }
+
+/*
+This is one of the most satisfying "level-ups" you can achieve in dynamic programming. 
+Moving from 32 MB to 160 KB isn't just about saving memory—it fundamentally changes how you think about algorithms.
+
+Here are the three core concepts you should take away from this optimization:
+
+## 1. State Space Reduction (Dropping a Dimension)
+
+In your original recursive approach, your state was defined by three things: `[index][gcd1][gcd2]`. 
+But if you look closely at how the state changes, 
+the calculation for `index` **only ever requires the results from `index - 1**` (or `index + 1` in top-down).
+
+Once you finish processing the 5th element, you will *never* need to look at the results of the 4th element again. 
+Because you only ever need the "current" row and the "previous" row, 
+you can completely delete the `index` dimension from your array. 
+This is the exact same logic behind why you only need two variables (not an entire array) 
+to compute the Fibonacci sequence.
+
+## 2. Top-Down vs. Bottom-Up DP
+
+You can only easily drop a dimension if you switch from **Recursion (Top-Down)** to **Iteration (Bottom-Up)**.
+
+* **Top-Down (Recursion):** Jumps all over the state space. 
+Because the recursive calls are evaluated in an unpredictable order, 
+you *must* keep the entire 3D `t[201][201][201]` table in memory.
+* **Bottom-Up (Iteration):** Moves in a strict, 
+predictable order (element 0, then 1, then 2...). 
+Because you control the order, you can safely overwrite old memory as you go using `dp = std::move(next_dp)`.
+
+## 3. Pruning Unreachable States
+
+In the iterative solution, we added this line:
+`if (dp[g1][g2] == 0) continue;`
+
+In your recursive solution, the recursion tree naturally only visits valid states. 
+But in bottom-up DP, nested loops will blindly iterate over every possible combination of `[g1][g2]`, 
+even if it's impossible to achieve those GCDs. 
+By explicitly skipping states that have a value of `0` (meaning there are 0 ways to reach this state), 
+you save the CPU from doing thousands of useless modulo operations, drastically speeding up the runtime.
+*/
