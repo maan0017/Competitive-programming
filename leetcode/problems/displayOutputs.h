@@ -1,7 +1,10 @@
 #pragma once
 
+#include <algorithm>
 #include <chrono>
+#include <iomanip>
 #include <iostream>
+#include <vector>
 
 // CUSTOM HEADERS
 #include "./terminalShpaes.hpp"
@@ -47,6 +50,96 @@ inline void displayTestCaseOutput(std::vector<T> expected, std::vector<T> output
         }
         std::cout << " ]\n";
     }
+}
+
+// for matrixes...
+template <typename T>
+inline void displayTestCaseOutput(const std::vector<std::vector<T>>& expected,
+                                  const std::vector<std::vector<T>>& output, double durationInMs)
+{
+    static int testCaseNumber = 1;
+
+    if (output == expected)
+    {
+        std::cout << "[PASS] Test case " << testCaseNumber++ << " | Time: " << durationInMs
+                  << " ms\n";
+        return;
+    }
+
+    // Prints matrix in one-line form: [[1 2][3 4]]
+    auto printMatrix = [](const std::vector<std::vector<T>>& matrix)
+    {
+        std::cout << "[";
+        for (const auto& row : matrix)
+        {
+            std::cout << "[ ";
+            for (const auto& val : row)
+                std::cout << val << " ";
+            std::cout << "]";
+        }
+        std::cout << "]";
+    };
+
+    // Prints matrices side-by-side
+    auto printSideBySide =
+        [](const std::vector<std::vector<T>>& expected, const std::vector<std::vector<T>>& output)
+    {
+        size_t rows = std::max(expected.size(), output.size());
+
+        // Find maximum width needed for expected matrix
+        size_t leftWidth = 0;
+        for (const auto& row : expected)
+        {
+            std::ostringstream oss;
+            oss << "|";
+            for (const auto& x : row)
+                oss << std::setw(4) << x;
+            oss << " |";
+            leftWidth = std::max(leftWidth, oss.str().length());
+        }
+
+        std::cout << "\n";
+        std::cout << "       Matrix View\n";
+        std::cout << "       " << std::left << std::setw(leftWidth + 2) << "Expected"
+                  << "Got\n";
+        std::cout << "       " << std::string(leftWidth + 25, '-') << '\n';
+
+        for (size_t i = 0; i < rows; ++i)
+        {
+            std::ostringstream left, right;
+
+            if (i < expected.size())
+            {
+                left << "|";
+                for (const auto& x : expected[i])
+                    left << std::setw(4) << x;
+                left << " |";
+            }
+
+            if (i < output.size())
+            {
+                right << "|";
+                for (const auto& x : output[i])
+                    right << std::setw(4) << x;
+                right << " |";
+            }
+
+            std::cout << "       " << std::left << std::setw(leftWidth + 2) << left.str() << "vs   "
+                      << right.str() << '\n';
+        }
+    };
+
+    std::cout << "[FAIL] Test case " << testCaseNumber++ << "\n";
+
+    std::cout << "       Expected : ";
+    printMatrix(expected);
+    std::cout << "\n";
+
+    std::cout << "       Got      : ";
+    printMatrix(output);
+    std::cout << "\n";
+
+    printSideBySide(expected, output);
 }
 
 // Returns elapsed milliseconds and writes the result into `out`.
